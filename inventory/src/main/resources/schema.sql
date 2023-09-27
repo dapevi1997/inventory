@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS branch (
     PRIMARY KEY (id)
     );
 
-    -- Create the Branch table
+    -- Create the Product table
     CREATE TABLE IF NOT EXISTS product (
         id INT NOT NULL AUTO_INCREMENT,
         product_id VARCHAR (255),
@@ -20,3 +20,15 @@ CREATE TABLE IF NOT EXISTS branch (
         product_category VARCHAR(100),
         PRIMARY KEY (id)
         );
+
+            -- Create the Product table
+            CREATE TABLE IF NOT EXISTS user_table (
+                id INT NOT NULL AUTO_INCREMENT,
+                user_id VARCHAR (255),
+                user_name VARCHAR(100),
+                user_lastName VARCHAR(255),
+                user_password VARCHAR(255),
+                user_email VARCHAR(255),
+                user_role VARCHAR(255),
+                PRIMARY KEY (id)
+                );

@@ -2,8 +2,10 @@ package com.sofka.inventory.utilities;
 
 import com.sofka.inventory.dtos.BranchDTO;
 import com.sofka.inventory.dtos.ProductDTO;
+import com.sofka.inventory.dtos.UserDTO;
 import com.sofka.inventory.model.Branch;
 import com.sofka.inventory.model.Product;
+import com.sofka.inventory.model.User;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -37,4 +39,19 @@ public class MapperUtils {
 
         };
     }
+
+    public Function<UserDTO, User> mapperToUser(){
+        return userDTO -> {
+            User user = new User();
+            user.setUserId(UUID.randomUUID().toString());
+            user.setUserName(userDTO.getUserName());
+            user.setUserLastName(userDTO.getUserLastName());
+            user.setUserPassword(userDTO.getUserPassword());
+            user.setUserEmail(userDTO.getUserEmail());
+            user.setUserRole(userDTO.getUserRole());
+            return user;
+
+        };
+    }
+
 }
