@@ -1,15 +1,12 @@
 package com.sofka.inventory.usecases;
 
+import com.sofka.inventory.dtos.BranchDTO;
 import com.sofka.inventory.model.Branch;
 import com.sofka.inventory.repository.BranchRepository;
+import com.sofka.inventory.utilities.MapperUtils;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
-import org.springframework.web.reactive.function.server.RouterFunction;
-import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
 
 @Data
@@ -18,17 +15,10 @@ import reactor.core.publisher.Mono;
 public class CreateBranchUseCase {
 
     private final BranchRepository branchRepository;
+    private final MapperUtils mapperUtils;
 
-    public Mono<Branch> createBranch(Branch branch){
-       return branchRepository.save(branch);
+    public Mono<Branch> createBranch(BranchDTO branchDTO){
+       return branchRepository.save(mapperUtils.mapperToBranch().apply(branchDTO));
     }
 
-    public Mono<ServerResponse> executor (Branch branch){
-        return createBranch(branch)
-                .flatMap(branch1 -> {
-                    return ServerResponse.ok()
-                            .contentType(MediaType.APPLICATION_JSON)
-                            .bodyValue(branch1);
-                });
-    }
 }
