@@ -1,0 +1,9 @@
+
+u
+java:S1602"SRemove useless curly braces around statement and then remove useless return keyword(ƒÖ¼Ýüÿÿÿÿ8ÂÍÞ«­1
+u
+java:S1602"SRemove useless curly braces around statement and then remove useless return keyword(±ÒŠóøÿÿÿÿ8ÃÍÞ«­1
+a
+java:S1128"?Remove this unused import 'com.sofka.inventory.dtos.BranchDTO'.(ªŸ‹…üÿÿÿÿ8ëñà«­1
+j
+java:S1128"MRemove this unused import 'com.sofka.inventory.usecases.CreateBranchUseCase'.(œÚ÷Å8ëñà«­1

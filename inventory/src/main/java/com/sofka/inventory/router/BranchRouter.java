@@ -23,6 +23,10 @@ public class BranchRouter {
     public RouterFunction<ServerResponse> createBranch(CreateBranchUseCase createBranchUseCase){
 
         Function<BranchDTO, Mono<ServerResponse>> executor = branchDTO -> {
+            if(branchDTO.getBranchName().isBlank()){
+                return ServerResponse.badRequest().contentType(MediaType.APPLICATION_JSON)
+                        .bodyValue("The branch name is necessary");
+            }
             return createBranchUseCase.createBranch(branchDTO)
                     .flatMap(branch -> {
                         return ServerResponse.ok()
